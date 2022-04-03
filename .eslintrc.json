@@ -11,6 +11,7 @@
   },
   "rules": {
     "prettier/prettier": "error",
-    "object-curly-spacing": ["error", "never"]
+    "object-curly-spacing": ["error", "never"],
+    "@typescript-eslint/strict-boolean-expressions": "off"
   }
 }
