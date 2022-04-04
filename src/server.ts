@@ -13,6 +13,7 @@ const port = process.env.PORT ?? 3333;
 mongodb
   .connect()
   .then(() => {
+    console.log('connected to mongodb');
     app.listen(port, () => console.log(`listening on port ${port}`));
   })
   .catch(console.error);
