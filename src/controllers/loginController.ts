@@ -6,7 +6,7 @@ export default {
   login: async (req: Request, res: Response) => {
     const {email, password} = req.body as LoginBody;
 
-    if (!email && !password) {
+    if (!email || !password) {
       res
         .status(400)
         .json({message: 'Email or password missing!', success: false});
