@@ -1,8 +1,7 @@
 import {Express} from 'express';
-import LoginRoutes from './login/login';
-import SignupRoutes from './signup/signup';
+import UserRoutes from './user/user';
 
 export default (app: Express): void => {
-  app.use('/login', LoginRoutes);
-  app.use('/signup', SignupRoutes);
+  app.get('/api', (req, res) => res.status(200).send('API running'));
+  app.use('/api/user', UserRoutes);
 };
