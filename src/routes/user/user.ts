@@ -10,4 +10,9 @@ router.post(
   async (req, res) => await userController.signup(req, res),
 );
 
+router.post(
+  '/update',
+  async (req, res) => await userController.update(req, res),
+);
+
 export default router;
