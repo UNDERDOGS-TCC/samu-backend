@@ -4,10 +4,12 @@
   "engines": {
     "node": "16.14.2"
   },
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nodemon ./src/server.ts"
+    "start": "node dist/server.js",
+    "postinstall": "tsc",
+    "start:dev": "nodemon ./src/server.ts",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
