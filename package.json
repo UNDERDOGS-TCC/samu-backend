@@ -9,7 +9,7 @@
     "start": "node dist/server.js",
     "postinstall": "tsc",
     "start:dev": "nodemon ./src/server.ts",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main"
+    "deploy": "git add . && git commit -m Heroku && git push -f heroku main"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
