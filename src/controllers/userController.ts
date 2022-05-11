@@ -12,7 +12,7 @@ export default {
     const error = await signupParamsValidator(req.body);
 
     if (error) {
-      res.status(400).json({message: error.message, success: false});
+      res.status(200).json({message: error.message, success: false});
     } else {
       const body = req.body as SignupBody;
 
