@@ -26,7 +26,7 @@ export default {
       const response = await users.insertOne(body);
 
       res.status(200).json({
-        message: 'User created',
+        message: 'Usuário criado com sucesso',
         success: true,
         id: response.insertedId,
       });
