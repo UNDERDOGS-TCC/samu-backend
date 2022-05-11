@@ -4,8 +4,8 @@ import {
   signupParamsValidator,
   updateParamsValidator,
 } from '../helpers/paramsValidation';
-import {LoginBody} from '../interfaces/login-body';
-import {SignupBody} from '../interfaces/signup-body';
+import {LoginBody} from '../interfaces/loginBody';
+import {SignupBody} from '../interfaces/signupBody';
 
 export default {
   signup: async (req: Request, res: Response) => {
