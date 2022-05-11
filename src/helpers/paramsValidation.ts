@@ -24,9 +24,10 @@ export const signupParamsValidator = async (
   }
 
   const usersCollection = await mongodb.getCollection('users');
-  const userExists = await usersCollection.findOne({email: body.email});
+  const emailExists = await usersCollection.findOne({email: body.email});
+  const cpfExists = await usersCollection.findOne({cpf: body.cpf});
 
-  if (userExists) return new Error('User already exists');
+  if (emailExists ?? cpfExists) return new Error('User already exists');
 
   if (body.password !== body.passwordConfirmation) {
     return new Error("Passwords don't match");
