@@ -11,4 +11,5 @@ export interface SignupBody {
   cep: string;
   state: string;
   city: string;
+  imageUri: string;
 }

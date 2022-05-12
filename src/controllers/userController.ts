@@ -73,8 +73,6 @@ export default {
     const user = req.body;
     delete user._id;
 
-    console.log(user);
-
     const usersCollection = await mongodb.getCollection('users');
     const userFound = await usersCollection.findOne({email: user.email});
 
