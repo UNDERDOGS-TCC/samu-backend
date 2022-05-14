@@ -13,7 +13,7 @@ export default {
     const error = await signupParamsValidator(req.body);
 
     if (error) {
-      res.status(400).json({message: error.message, success: false});
+      res.status(200).json({message: error.message, success: false});
     } else {
       const body = req.body as SignupBody;
 
@@ -27,7 +27,7 @@ export default {
       const response = await users.insertOne(body);
 
       res.status(200).json({
-        message: 'User created',
+        message: 'Usuário criado com sucesso',
         success: true,
         id: response.insertedId,
       });
@@ -73,8 +73,6 @@ export default {
 
     const user = req.body;
     delete user._id;
-
-    console.log(user);
 
     const usersCollection = await mongodb.getCollection('users');
     const userFound = await usersCollection.findOne({email: user.email});

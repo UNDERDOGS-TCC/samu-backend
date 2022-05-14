@@ -17,19 +17,21 @@ export const signupParamsValidator = async (
     'city',
   ];
 
-  if (!body) return new Error('Missing body');
+  if (!body) return new Error('Dados faltando');
 
   for (const field of SIGNUP_FIELDS) {
-    if (!body[field]) return new Error(`Missing field: ${field}`);
+    if (!body[field])
+      return new Error(`O seguinte campo está faltando: ${field}`);
   }
 
   const usersCollection = await mongodb.getCollection('users');
-  const userExists = await usersCollection.findOne({email: body.email});
+  const emailExists = await usersCollection.findOne({email: body.email});
+  const cpfExists = await usersCollection.findOne({cpf: body.cpf});
 
-  if (userExists) return new Error('User already exists');
+  if (emailExists ?? cpfExists) return new Error('O usuário já existe');
 
   if (body.password !== body.passwordConfirmation) {
-    return new Error("Passwords don't match");
+    return new Error('As senhas não são iguais');
   }
 
   return null;
