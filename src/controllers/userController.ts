@@ -126,4 +126,49 @@ export default {
       .json({message: 'Usuáiro encontrado', success: true, user: user});
     return;
   },
+  resetPassword: async (req: Request, res: Response) => {
+    const {cpf, email, birthday} = req.body as {
+      cpf: string;
+      email: string;
+      birthday: string;
+    };
+
+    if (!cpf || !email || !birthday) {
+      res.status(200).json({message: 'Dados faltando', success: false});
+      return;
+    }
+
+    const usersCollection = await mongodb.getCollection('users');
+    const user = (await usersCollection.findOne({
+      cpf: cpf,
+      email: email,
+      birthday: birthday,
+    })) as unknown as User;
+
+    if (!user) {
+      res.status(200).json({message: 'Usuário não encontrado', success: false});
+      return;
+    }
+
+    const newPassword = new Crypto().randomUUID();
+    user.password = newPassword;
+    const response = await usersCollection.updateOne(
+      {_id: new ObjectId(user._id)},
+      {$set: user},
+    );
+
+    if (!response.acknowledged) {
+      res
+        .status(200)
+        .json({message: 'Não foi possível resetar a senha', success: false});
+      return;
+    }
+
+    // TODO: send email with new password
+
+    res.status(200).json({
+      message: 'Sua nova senha foi enviada para o seu email',
+      success: true,
+    });
+  },
 };

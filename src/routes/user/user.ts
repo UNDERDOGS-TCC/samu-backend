@@ -20,4 +20,9 @@ router.get(
   async (req, res) => await userController.getUserById(req, res),
 );
 
+router.post(
+  '/resetpassword',
+  async (req, res) => await userController.resetPassword(req, res),
+);
+
 export default router;
