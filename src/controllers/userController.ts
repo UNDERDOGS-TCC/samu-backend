@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import mongodb from '../config/mongodb';
+import {ObjectId} from 'mongodb';
 import {
   signupParamsValidator,
   updateParamsValidator,
@@ -109,7 +110,9 @@ export default {
     }
 
     const usersCollection = await mongodb.getCollection('users');
-    const user = (await usersCollection.findOne({_id: id})) as unknown as User;
+    const user = (await usersCollection.findOne({
+      _id: new ObjectId(id),
+    })) as unknown as User;
 
     if (!user) {
       res.status(200).json({message: 'Usuário não encontrado', success: false});
