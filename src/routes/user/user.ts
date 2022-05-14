@@ -15,4 +15,9 @@ router.post(
   async (req, res) => await userController.update(req, res),
 );
 
+router.get(
+  '/:id',
+  async (req, res) => await userController.getUserById(req, res),
+);
+
 export default router;

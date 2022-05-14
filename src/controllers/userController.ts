@@ -6,6 +6,7 @@ import {
 } from '../helpers/paramsValidation';
 import {LoginBody} from '../interfaces/loginBody';
 import {SignupBody} from '../interfaces/signupBody';
+import {User} from '../interfaces/user';
 
 export default {
   signup: async (req: Request, res: Response) => {
@@ -100,5 +101,28 @@ export default {
         });
       }
     }
+  },
+  getUserById: async (req: Request, res: Response) => {
+    const {id} = req.params;
+
+    if (!id) {
+      res.status(200).json({message: 'Id de usuário faltando', success: false});
+      return;
+    }
+
+    const usersCollection = await mongodb.getCollection('users');
+    const user = (await usersCollection.findOne({_id: id})) as unknown as User;
+
+    if (!user) {
+      res.status(200).json({message: 'Usuário não encontrado', success: false});
+      return;
+    }
+
+    delete user.password;
+
+    res
+      .status(200)
+      .json({message: 'Usuáiro encontrado', success: true, user: user});
+    return;
   },
 };
