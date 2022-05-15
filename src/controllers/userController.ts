@@ -171,7 +171,7 @@ export default {
     const body = `
       <p>Olá, <strong>${user.name.split(' ')[0]}</strong></p>
       <p>Sua senha foi resetada com sucesso!</p>
-      <p>Sua nova senha é: ${newPassword}</p>
+      <p>Sua nova senha é: <strong>${newPassword}</strong></p>
       <p>Você pode trocar a sua senha dentro do aplicativo!</p>
     `;
 
