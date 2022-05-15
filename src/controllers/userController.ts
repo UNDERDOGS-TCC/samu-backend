@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import mongodb from '../config/mongodb';
+import crypto from 'crypto';
 import {ObjectId} from 'mongodb';
 import {
   signupParamsValidator,
@@ -8,6 +9,7 @@ import {
 import {LoginBody} from '../interfaces/loginBody';
 import {SignupBody} from '../interfaces/signupBody';
 import {User} from '../interfaces/user';
+import {sendEmail} from '../config/aws';
 
 export default {
   signup: async (req: Request, res: Response) => {
@@ -150,7 +152,7 @@ export default {
       return;
     }
 
-    const newPassword = new Crypto().randomUUID();
+    const newPassword = crypto.randomUUID();
     user.password = newPassword;
     const response = await usersCollection.updateOne(
       {_id: new ObjectId(user._id)},
@@ -164,7 +166,17 @@ export default {
       return;
     }
 
+    const recipientEmail = email;
+    const subject = 'Reset de senha';
+    const body = `
+      <p>Olá, <strong>${user.name.split(' ')[0]}</strong></p>
+      <p>Sua senha foi resetada com sucesso!</p>
+      <p>Sua nova senha é: ${newPassword}</p>
+      <p>Você pode trocar a sua senha dentro do aplicativo!</p>
+    `;
+
     // TODO: send email with new password
+    await sendEmail(recipientEmail, subject, body);
 
     res.status(200).json({
       message: 'Sua nova senha foi enviada para o seu email',
