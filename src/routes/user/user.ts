@@ -25,4 +25,9 @@ router.post(
   async (req, res) => await userController.resetPassword(req, res),
 );
 
+router.post(
+  '/redefinepassword',
+  async (req, res) => await userController.redefinePassword(req, res),
+);
+
 export default router;

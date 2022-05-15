@@ -183,4 +183,47 @@ export default {
       success: true,
     });
   },
+  redefinePassword: async (req: Request, res: Response) => {
+    const {id, oldPassword, newPassword} = req.body as {
+      id: string;
+      oldPassword: string;
+      newPassword: string;
+    };
+
+    if (!id || !oldPassword || !newPassword) {
+      res.status(200).json({message: 'Dados faltando', success: false});
+      return;
+    }
+
+    const usersCollection = await mongodb.getCollection('users');
+    const user = await usersCollection.findOne({_id: new ObjectId(id)});
+
+    if (!user) {
+      res.status(200).json({message: 'Usuário não encontrado', success: false});
+      return;
+    }
+
+    if (user.password !== oldPassword) {
+      res.status(200).json({message: 'Senha atual incorreta', success: false});
+      return;
+    }
+
+    user.password = newPassword;
+    const response = await usersCollection.updateOne(
+      {_id: new ObjectId(user._id)},
+      {$set: user},
+    );
+
+    if (!response.acknowledged) {
+      res
+        .status(200)
+        .json({message: 'Não foi possível redefinir a senha', success: false});
+      return;
+    }
+
+    res.status(200).json({
+      message: 'Sua senha foi redefinida com sucesso',
+      success: true,
+    });
+  },
 };
