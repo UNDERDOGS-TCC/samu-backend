@@ -9,7 +9,8 @@ import {
 import {LoginBody} from '../interfaces/loginBody';
 import {SignupBody} from '../interfaces/signupBody';
 import {User} from '../interfaces/user';
-import {sendEmail} from '../config/aws';
+import sendEmail from '../config/send-email';
+import {SendEmailParams} from '../interfaces/sendEmailParams';
 
 export default {
   signup: async (req: Request, res: Response) => {
@@ -162,21 +163,23 @@ export default {
     if (!response.acknowledged) {
       res
         .status(200)
-        .json({message: 'Não foi possível resetar a senha', success: false});
+        .json({message: 'Não foi possível redefinir a senha', success: false});
       return;
     }
 
-    const recipientEmail = email;
-    const subject = 'Reset de senha';
-    const body = `
-      <p>Olá, <strong>${user.name.split(' ')[0]}</strong></p>
-      <p>Sua senha foi resetada com sucesso!</p>
-      <p>Sua nova senha é: <strong>${newPassword}</strong></p>
-      <p>Você pode trocar a sua senha dentro do aplicativo!</p>
+    const mailBody: string = `
+      <p>Olá, <strong>${user.name.split(' ')[0]}</strong>.</p>
+      <p>Sua nova senha é <strong>${newPassword}</strong>.</p>
+      <p>Você deve alterar para uma nova senha dentro do aplicativo.</p>
     `;
 
-    // TODO: send email with new password
-    await sendEmail(recipientEmail, subject, body);
+    const mailObject: SendEmailParams = {
+      to: user.email,
+      message: mailBody,
+      subject: 'Sua senha foi redefinida',
+    };
+
+    await sendEmail(mailObject);
 
     res.status(200).json({
       message: 'Sua nova senha foi enviada para o seu email',
