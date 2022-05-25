@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "postinstall": "tsc",
-    "start:dev": "nodemon ./src/server.ts",
+    "postinstall": "tsc && cp ./public ./dist",
+    "start:dev": "nodemon server.ts",
     "deploy": "git add . && git commit -m Heroku && git push -f heroku main"
   },
   "dependencies": {

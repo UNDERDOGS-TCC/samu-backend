@@ -1,0 +1,47 @@
+/*====  RESET ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+  background-color: #fff;
+  max-width: 192rem;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2 px #999;
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #18a0fb;
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #05446e;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+
+  margin-left: 2.4rem;
+  margin-right: 2.4rem;
+}

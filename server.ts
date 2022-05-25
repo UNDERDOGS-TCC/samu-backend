@@ -1,10 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
-import setupMiddlewares from './middlewares';
-import setupRoutes from './routes';
-import mongodb from './config/mongodb';
+import setupMiddlewares from './src/middlewares';
+import setupRoutes from './src/routes';
+import mongodb from './src/config/mongodb';
 
 const app = express();
+app.use('/', express.static('public'));
 setupMiddlewares(app);
 setupRoutes(app);
 
