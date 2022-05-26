@@ -1,0 +1,368 @@
+/******************************************/
+/* BELOW 1550px */
+/******************************************/
+
+@media (max-width: 97em) {
+  .hero-main-text {
+    font-size: 5.6rem;
+  }
+}
+
+/******************************************/
+/* BELOW 1550px */
+/******************************************/
+
+@media (max-width: 89em) {
+  .hero-main-text {
+    font-size: 4.8rem;
+  }
+  .hero-main-description {
+    font-size: 1.4rem;
+  }
+}
+
+/******************************************/
+/* BELOW 1230px */
+/******************************************/
+
+@media (max-width: 77em) {
+  .container {
+    gap: 6rem;
+  }
+  .main-hero {
+    height: 70vh;
+  }
+  .hero-main-text {
+    font-size: 4rem;
+  }
+  .hero-main-description {
+    font-size: 1.2rem;
+  }
+  .nome-membro {
+    font-size: 1.8rem;
+  }
+}
+
+/******************************************/
+/* BELOW 1070px */
+/******************************************/
+
+@media (max-width: 67em) {
+  .container {
+    gap: 10rem;
+  }
+  .main-hero {
+    flex-direction: column-reverse;
+    margin-top: 4rem;
+    height: auto;
+  }
+  .main-hero-first-section {
+    width: 80%;
+  }
+  .hero-text-container {
+    padding: 2.4rem;
+  }
+  .div-imagens-hero {
+    width: 80%;
+    margin-bottom: 3rem;
+  }
+  .hero-main-text {
+    font-size: 4.8rem;
+    text-align: center;
+  }
+  .hero-main-description {
+    font-size: 1.8rem;
+    align-self: center;
+  }
+  .div-time {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+  }
+  .card-membros {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
+  .nome-membro {
+    font-size: 1.8rem;
+  }
+  .section-project {
+    gap: 2rem;
+  }
+  .project-div {
+    width: 80rem;
+  }
+  .testimonial-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 56em) {
+  .hero-main-description {
+    font-size: 1.6rem;
+  }
+  .nav-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 50em) {
+  .container {
+    gap: 7rem;
+  }
+  .hero-main-text {
+    font-size: 4.4rem;
+  }
+  .hero-main-description {
+    font-size: 1.4rem;
+  }
+  .featured-title {
+    font-size: 1.8rem;
+  }
+  .logos {
+    height: 5rem;
+  }
+  .logos p {
+    font-size: 1.4rem;
+  }
+  .div-time {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-membros {
+    width: 25rem;
+  }
+  .nome-membro {
+    font-size: 2rem;
+  }
+  .card-membros:last-child {
+    grid-column: 1 / -1;
+  }
+  .section-project {
+    gap: 4rem;
+  }
+  .project {
+    display: block;
+  }
+  .project-div {
+    margin-top: 0;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    gap: 4rem;
+  }
+  .project-img {
+    transform: scale(1);
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .testimonial {
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 46em) {
+  .hero-main-text {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 43em) {
+  .logo-text:link,
+  .logo-text:visited {
+    font-size: 1.8rem;
+  }
+  .logo-img {
+    width: 4rem;
+  }
+  .nav-link:link,
+  .nav-link:visited {
+    font-size: 1.4rem;
+  }
+  .hero-main-text {
+    font-size: 3.6rem;
+  }
+  .hero-main-description {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .card-membros {
+    width: 20rem;
+  }
+  .testimonial-text {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 39em) {
+  .hero-image {
+    width: 100%;
+  }
+  .hero-main-text {
+    font-size: 3rem;
+  }
+  .hero-text-container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .testimonial-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 35em) {
+  .hero-main-description {
+    text-align: center;
+  }
+  .featured-title {
+    font-size: 1.6rem;
+  }
+  .div-featured {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 4rem;
+  }
+  .project-div {
+    flex-direction: column;
+    width: 75%;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  .project-img {
+    width: 100%;
+    height: auto;
+  }
+  .testimonial {
+    margin-right: 0;
+    margin: 0 1rem 1rem 1rem;
+  }
+  .testimonial-text {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 32em) {
+  .main-header {
+    padding: 2rem 1rem 0;
+  }
+  .div-logo {
+    margin-left: 1rem;
+  }
+  .nav-link:link,
+  .nav-link:visited {
+    padding: 0;
+  }
+  .div-time {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-membros {
+    width: 20rem;
+    gap: 1rem;
+  }
+  .nome-membro {
+    margin: 0 auto 1rem;
+    font-size: 2.2rem;
+  }
+  .testimonial-text {
+    font-size: 1.6rem;
+  }
+  .featured-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 27em) {
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 2.8rem;
+  }
+  .main-header {
+    justify-content: center;
+  }
+  .main-nav-list {
+    display: none;
+  }
+  .card-membros {
+    width: 18rem;
+  }
+  .nome-membro {
+    font-size: 1.6rem;
+  }
+  .main-hero-first-section {
+    width: 90%;
+  }
+  .div-imagens-hero {
+    width: 90%;
+  }
+  .hero-main-text {
+    font-size: 3rem;
+  }
+  .hero-main-description {
+    font-size: 1.6rem;
+  }
+  .hero-cta {
+    gap: 1rem;
+  }
+  .featured-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 24em) {
+  .hero-main-text {
+    font-size: 2rem;
+  }
+  .hero-main-description {
+    font-size: 1.2rem;
+  }
+  .cta-btn:link,
+  .cta-btn:visited {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+  .cta-btn-more:link,
+  .cta-btn-more:visited {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+  .featured-title {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .logos {
+    height: 4rem;
+  }
+  .logos p {
+    font-size: 1rem;
+  }
+  .testimonial-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 19em) {
+  .hero-main-text {
+    font-size: 1.8rem;
+  }
+  .hero-main-description {
+    font-size: 1rem;
+  }
+  .cta-btn:link,
+  .cta-btn:visited {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+  .cta-btn-more:link,
+  .cta-btn-more:visited {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+}
