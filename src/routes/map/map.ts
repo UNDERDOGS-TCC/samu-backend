@@ -4,8 +4,8 @@ import mapController from '../../controllers/mapController';
 const router = Router();
 
 router.post(
-  '/randomLocation',
-  async (req, res) => await mapController.randomLocation(req, res),
+  '/samuLocation',
+  async (req, res) => await mapController.samuLocation(req, res),
 );
 
 export default router;
