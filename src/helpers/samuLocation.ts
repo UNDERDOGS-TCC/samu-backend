@@ -7,15 +7,16 @@ export const closestSamuLocation = async (
   radius: number = 5000,
 ): Promise<LatLng> => {
   const apiKey = String(process.env.API_KEY);
+  const apiString = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=samu%20servico%20de%20emergencia&location=${latitude}%2C${longitude}&radius=${radius}&key=${apiKey}`;
   const config = {
     method: 'get',
-    url: `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?fields=formatted_address%2Cname%2Cgeometry&input=samu%20servico%20de%20emergencia&inputtype=textquery&locationbias=circle%3A${radius}%${latitude}%2C${longitude}&key=${apiKey}`,
+    url: apiString,
     headers: {},
   };
 
   try {
     const response: MapsApiResponse = await axios(config);
-    const location = response.data.candidates[0].geometry.location;
+    const location = response.data.results[0].geometry.location;
     return location;
   } catch (error: any) {
     console.log(error);

@@ -14,7 +14,7 @@ export interface MapsApiResponse {
 }
 
 export interface MapsNearbyApiResponse {
-  candidates: CandidatesBody[];
+  results: CandidatesBody[];
   status: string;
 }
 
