@@ -38,8 +38,8 @@ export const closestSamuLocation = async (
 
     const response = await axios(configDirections);
     return {
-      distance: response.data.routes[0].legs[0].distance.value,
-      time: response.data.routes[0].legs[0].duration.value,
+      distance: response.data.routes[0].legs[0].distance.text,
+      time: response.data.routes[0].legs[0].duration.text,
     };
   };
 
