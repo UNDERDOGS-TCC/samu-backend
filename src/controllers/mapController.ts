@@ -1,28 +1,31 @@
 import {Request, Response} from 'express';
-import {randomLocationWithinRadius} from '../helpers/randomLocation';
-import {RandomLocationBody} from '../interfaces/randomLocationBody';
+import {closestSamuLocation} from '../helpers/samuLocation';
+import {SamuLocationBody} from '../interfaces/samuLocationBody';
 
 export default {
-  randomLocation: async (req: Request, res: Response) => {
-    const {latitude, longitude, radius} = req.body as RandomLocationBody;
+  samuLocation: async (req: Request, res: Response) => {
+    const {latitude, longitude, radius} = req.body as SamuLocationBody;
 
-    if (!latitude || !longitude || !radius) {
+    if (!latitude || !longitude) {
       return res.status(200).json({
-        message: 'Latitude, longitude ou raio faltando',
+        message: 'Latitude ou longitude faltando',
         success: false,
       });
     }
 
-    const randomLatLng = randomLocationWithinRadius(
-      latitude,
-      longitude,
-      radius,
-    );
+    const LatLng = await closestSamuLocation(latitude, longitude, radius);
+
+    if (!LatLng.lat || !LatLng.lng) {
+      return res.status(200).json({
+        message: 'Ocorreu um erro ao buscar a localização',
+        success: false,
+      });
+    }
 
     return res.status(200).json({
-      message: 'Localização aleatória gerada com sucesso',
+      message: 'Localização encontrada com sucesso',
       success: true,
-      data: randomLatLng,
+      data: LatLng,
     });
   },
 };
